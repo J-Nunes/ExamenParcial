@@ -1,42 +1,42 @@
 #include <iostream>
-#ifndef __DOUBLELIST_H__
-#define __DOUBLELIST_H__
+#ifndef __DoubleList_H__
+#define __DoubleList_H__
 
 
 template<class TYPE>
 struct doubleNode
 {
 	TYPE value;
-	node<TYPE>* next;
-	node<TYPE>* pervious;
+	doubleNode<TYPE>* next;
+	doubleNode<TYPE>* previous;
 };
 
 
 template<class TYPE>
-class Doublelist
+class DoubleList
 {
 private:
 	doubleNode<TYPE>* start;
 
 public:
 
-	Doublelist()
+	DoubleList()
 	{
 		start = NULL;
 	}
 
-	~Doublelist()
+	~DoubleList()
 	{
 		delAll();
 	}
 
 
-	void add(TYPE newNode)
+	void add(TYPE value)
 	{
-		node<TYPE>* newNode = new node;
-		newNode->value = valor;
+		doubleNode<TYPE>* newNode = new doubleNode<TYPE>;
+		newNode->value = value;
 		newNode->next = NULL;
-		newNode->pervious = NULL;
+		newNode->previous = NULL;
 
 		if (start == NULL)
 		{
@@ -45,7 +45,7 @@ public:
 
 		else
 		{
-			node<TYPE>* tmp = start;
+			doubleNode<TYPE>* tmp = start;
 
 			while (tmp->next != NULL)
 			{
@@ -64,7 +64,7 @@ public:
 		{
 			doubleNode<TYPE>* tmp = start;
 
-			for (unsigned int i = 0; i < position; i++;)
+			for (unsigned int i = 0; i < position; i++)
 			{
 				tmp = tmp->next;
 			}
@@ -73,13 +73,13 @@ public:
 		return NULL;
 	}
 
-	bool del(node<TYPE>* nodeToDelete)
+	bool del(doubleNode<TYPE>* nodeToDelete)
 	{
 		if (nodeToDelete != NULL && start != NULL)
 		{
 			if (nodeToDelete != start)
 			{
-				node<TYPE>* tmp = start;
+				doubleNode<TYPE>* tmp = start;
 
 
 				while (tmp->next != nodeToDelete)
@@ -92,7 +92,7 @@ public:
 				}
 
 				tmp->next = nodeToDelete->next;
-				node<TYPE>* tmp2 = nodeToDelete;
+				doubleNode<TYPE>* tmp2 = nodeToDelete;
 				tmp2 = tmp2->next;
 				tmp2->previous = tmp;
 				delete nodeToDelete;
@@ -101,16 +101,16 @@ public:
 			else
 			{
 				start = start->next;
-				delete DelNode;
+				delete nodeToDelete;
 				return true;
 			}
 		}
 	}
 
-	unsigned int Count() const
+	unsigned int count() const
 	{
 		unsigned int counter = 0;
-		node* tmp = start;
+		doubleNode* tmp = start;
 
 		if (start != NULL)
 		{
@@ -123,20 +123,21 @@ public:
 		return counter;
 	}
 
-	void delAll()
+	bool delAll()
 	{
 		if (start != NULL)
 		{
-			node<TYPE>* tmp = start;
+			doubleNode<TYPE>* tmp = start;
 
 			while (tmp->next != NULL)
 			{
-				node<TYPE>* tmp2 = tmp;
+				doubleNode<TYPE>* tmp2 = tmp;
 				tmp = tmp->next;
 				delete tmp2;
 			}
 			delete tmp;
 			start = NULL;
+			return true;
 		}
 
 		else{

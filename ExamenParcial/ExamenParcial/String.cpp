@@ -122,42 +122,42 @@
 
 	const String& String::operator+= (const String& s)
 	{
-		unsigned int need_size = string.Length() + Length() + 1;
+		unsigned int need_size = s.len() + len() + 1;
 
 		if (need_size > size)
 		{
 			char* tmp = str;
-			Alloc(need_size);
+			alloc(need_size);
 			strcpy_s(str, size, tmp);
 			delete[] tmp;
 		}
 
-		strcat_s(str, size, string.str);
+		strcat_s(str, size, s.str);
 
 		return(*this);
 	}
 
 	const String& String::operator+= (const char* s)
 	{
-		if (string != NULL)
+		if (s != NULL)
 		{
-			unsigned int need_size = strlen(string) + Length() + 1;
+			unsigned int need_size = strlen(s) + len() + 1;
 
 			if (need_size > size)
 			{
 				char* tmp = str;
-				Alloc(need_size);
+				alloc(need_size);
 				strcpy_s(str, size, tmp);
 				delete[] tmp;
 			}
 
-			strcat_s(str, size, string);
+			strcat_s(str, size, s);
 		}
 
 		return(*this);
 	}
 
-	unsigned int String::len() const
+	const unsigned int String::len() const
 	{
 		return strlen(str);
 	}
@@ -170,7 +170,7 @@
 		str[0] = '\0';
 	}
 
-	unsigned int String::capacity()const
+	const unsigned int String::capacity()const
 	{
 		return(size + 1);
 	}

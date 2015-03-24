@@ -37,11 +37,11 @@ public:
 
 	const String& operator+= (const char* s);
 
-	const int len() const;
+	const unsigned int len() const;
 
 	void clear();
 
-	const int capacity();
+	const unsigned int capacity();
 
 	const char* getString()const;
 
