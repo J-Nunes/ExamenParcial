@@ -136,8 +136,6 @@
 
 		strcat_s(str, strlen(s.str) + size + 1, s.str);
 
-		printf("%s", str);
-
 		return (*this);
 
 

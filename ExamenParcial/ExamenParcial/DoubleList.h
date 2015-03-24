@@ -62,13 +62,11 @@ public:
 	{
 		if (start != NULL && position < count())
 		{
-			unsigned int counter = 0;
 			doubleNode<TYPE>* tmp = start;
 
-			while (counter < position)
+			for (unsigned int i = 0; i < position; i++;)
 			{
 				tmp = tmp->next;
-				counter++;
 			}
 			return tmp;
 		}
@@ -88,7 +86,9 @@ public:
 				{
 					tmp = tmp->next;
 					if (tmp->next == NULL)
+					{
 						return false;
+					}
 				}
 
 				tmp->next = nodeToDelete->next;
@@ -131,7 +131,6 @@ public:
 
 			while (tmp->next != NULL)
 			{
-
 				node<TYPE>* tmp2 = tmp;
 				tmp = tmp->next;
 				delete tmp2;
