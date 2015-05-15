@@ -170,7 +170,47 @@
 		str[0] = '\0';
 	}
 
-	const unsigned int String::capacity()const
+	void String::trim()
+	{
+		unsigned int i = 0;
+
+		if (str[0] == ' ')
+		{
+			while (str[i] == ' ')
+				i++;
+
+			for (unsigned int j = 0, i; str[i] != ' ' && str[i + 1] != ' '; j++, i++)
+				{
+					if (i < size)
+						str[j] = str[i];
+					else
+						break;
+				}
+
+			if (str[i] == ' ')
+			{
+				str[i] = '/0';
+			}
+		}
+
+		else
+		{
+			while (str[i] != ' ' && str[i + 1] != ' ')
+			{
+				if (i < size)
+					i++;
+				else
+					break;
+			}
+
+			if (str[i] == ' ')
+			{
+				str[i] = '/0';
+			}
+		}
+	}
+
+	const unsigned int String::getCapacity()const
 	{
 		return(size + 1);
 	}

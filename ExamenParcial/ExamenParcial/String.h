@@ -41,7 +41,9 @@ public:
 
 	void clear();
 
-	const unsigned int capacity();
+	void trim();
+
+	const unsigned int getCapacity() const;
 
 	const char* getString()const;
 

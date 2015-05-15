@@ -69,6 +69,7 @@
     <ClCompile Include="String.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Circle.h" />
     <ClInclude Include="DoubleList.h" />
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="Point2D.h" />
